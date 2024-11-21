@@ -1,0 +1,45 @@
+<h1 class="card-title">LOGIN</h1>
+<form [formGroup]="loginForm">
+  <div class="textfield">
+    <label for="email">E-mail</label>
+    <input [ngClass]="loginForm.controls.email.touched && loginForm.controls.email.invalid ? 'error' : 'normal'"
+      type="text" formControlName="email" placeholder="nome@email.com" (keyup)="hasError = false"
+    />
+    <div class="errors">
+      <div class="invalid-field" *ngIf="loginForm.controls.email.touched && loginForm.controls.email.errors?.required">
+        Campo obrigatório
+      </div>
+      <div class="invalid-field" *ngIf="loginForm.controls.email.touched && loginForm.controls.email.errors?.pattern">
+        E-mail inválido
+      </div>
+    </div>
+  </div>
+  <div class="textfield">
+    <label for="password">Senha</label>
+    <input [ngClass]="loginForm.controls.password.touched && loginForm.controls.password.invalid ? 'error' : 'normal'"
+      type="password" formControlName="password" placeholder="Senha" [maxLength]="18" (keyup)="hasError = false"
+    />
+    <div class="errors">
+      <div class="invalid-field" *ngIf="loginForm.controls.password.touched && loginForm.controls.password.errors?.required">
+        Campo obrigatório
+      </div>
+      <div class="invalid-field" *ngIf="hasError">
+        Usuário e/ou senha inválidos
+      </div>
+    </div>
+  </div>
+  <button class="btn-login" (click)="onLogin()">Login</button>
+  <div class="forgot-or-signup">
+    <div class="forgot-password">
+      <a class="forgot-password-link" [routerLink]="['/recover']">Esqueceu a senha?</a>
+    </div>
+    <div class="divider">
+      <hr>
+      <p>ou</p>
+      <hr>
+    </div>
+    <div class="signup">
+      <button class="btn-signup" [routerLink]="['/signup']">Cadastre-se</button>
+    </div>
+  </div>
+</form>

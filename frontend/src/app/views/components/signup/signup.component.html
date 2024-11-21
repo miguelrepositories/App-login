@@ -1,0 +1,62 @@
+<h1 class="card-title">SIGNUP</h1>
+<form [formGroup]="signupForm">
+  <div class="textfield">
+    <label for="email">E-mail</label>
+    <input [ngClass]="signupForm.controls.email.touched && signupForm.controls.email.invalid ? 'error' : 'normal'" 
+      type="text" 
+      formControlName="email" 
+      placeholder="nome@email.com" 
+    />
+    <div class="errors">
+      <div class="invalid-field" *ngIf="signupForm.controls.email.touched && signupForm.controls.email.errors?.required">
+        Campo obrigatório
+      </div>
+      <div class="invalid-field" *ngIf="signupForm.controls.email.touched && signupForm.controls.email.errors?.pattern">
+        E-mail inválido
+      </div>
+    </div>
+  </div>
+  <div class="textfield">
+    <label for="password">Senha</label>
+    <input [ngClass]="signupForm.controls.password.touched && signupForm.controls.password.invalid ? 'error' : 'normal'" 
+      type="password" 
+      formControlName="password" 
+      placeholder="Senha" 
+      [maxLength]="18" 
+    />
+    <div class="errors">
+      <div class="invalid-field" *ngIf="signupForm.controls.password.touched && signupForm.controls.password.errors?.required">
+        Campo obrigatório
+      </div>
+      <div class="invalid-field" *ngIf="signupForm.controls.password.touched && signupForm.controls.password.errors?.pattern">
+        Senha inválida
+      </div>
+    </div>
+  </div>
+  <div class="instructions">
+    <p>
+      Sua senha deve conter:
+    </p>
+    <li>De 8 a 18 caracteres</li>
+    <li>1 número, 1 letra maiúscula e 1 minúscula</li>
+    <li>1 caractere especial ex.: (@, #, $, &, *)</li>
+  </div>
+  <div class="textfield">
+    <label for="confirmPassword">Confirme a senha</label>
+    <input [ngClass]="signupForm.controls.confirmPassword.touched && signupForm.controls.confirmPassword.invalid ? 'error' : 'normal'" 
+      type="password" 
+      formControlName="confirmPassword" 
+      placeholder="Senha" 
+      [maxLength]="18"
+    />
+    <div class="errors">
+      <div class="invalid-field" *ngIf="signupForm.controls.confirmPassword.touched && signupForm.controls.confirmPassword.errors?.required">
+        Campo obrigatório
+      </div>
+      <div class="invalid-field" *ngIf="signupForm.controls.confirmPassword.touched && signupForm.controls.confirmPassword.errors?.diff">
+        As senhas não são iguais
+      </div>
+    </div>
+  </div>
+  <button class="btn-signup" [disabled]="signupForm.invalid" (click)="onSubmit()">Signup</button>
+</form>

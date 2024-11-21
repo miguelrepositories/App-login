@@ -1,0 +1,17 @@
+<div class="main-login" *ngIf="!userLogged">
+  <div class="left-login">
+    <h1 class="main-title">{{title}}<br>{{subtitle}}</h1>
+    <img src="../../../assets/animation.svg" alt="animation" class="left-login-animation">
+  </div>
+  <div class="right-login">
+    <div class="card-login">
+      <router-outlet>
+      </router-outlet>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="userLogged">
+  <router-outlet>
+  </router-outlet>
+</div>

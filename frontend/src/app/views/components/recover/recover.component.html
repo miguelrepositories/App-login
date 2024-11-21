@@ -1,0 +1,22 @@
+<h1 class="card-title">RECOVER</h1>
+<form [formGroup]="recoverForm">
+  <img src="../../../../assets/send-figure.png" alt="send-email-figure" class="send-email-figure">
+  <div class="card-subtitle">
+    <p>Informe seu e-mail cadastrado para receber o link de criação da nova senha.</p>
+  </div>
+  <div class="textfield">
+    <label for="email">E-mail</label>
+    <input [ngClass]="recoverForm.controls.email.touched && recoverForm.controls.email.invalid ? 'error' : 'normal'"
+      type="text" formControlName="email" placeholder="nome@email.com" 
+    />
+    <div class="errors">
+      <div class="invalid-field" *ngIf="recoverForm.controls.email.touched && recoverForm.controls.email.errors?.required">
+        Campo obrigatório
+      </div>
+      <div class="invalid-field" *ngIf="recoverForm.controls.email.touched && recoverForm.controls.email.errors?.pattern">
+        E-mail inválido
+      </div>
+    </div>
+  </div>
+  <button class="btn-send" (click)="send()">RECOVER</button>
+</form>

@@ -1,0 +1,25 @@
+<div class="main">
+  <mat-toolbar class="toolbar">
+    <span class="title">
+      <a [routerLink]="['/home']">Home</a>
+    </span>
+    <span class="example-spacer"></span>
+    <button class="icon" mat-button [matMenuTriggerFor]="menu">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu class="menu" #menu="matMenu">
+      <button mat-menu-item>
+        <mat-icon class="icon">account_circle</mat-icon>
+        <span>Conta</span>
+      </button>
+      <button mat-menu-item (click)="onLogout()">
+        <mat-icon class="icon">logout</mat-icon>
+        <span>Sair</span>
+      </button>
+    </mat-menu>
+  </mat-toolbar>
+
+  <div class="home-page-animation">
+    <img src="../../../../assets/home-page-animation.svg" alt="home-page-animation">
+  </div>
+</div>
